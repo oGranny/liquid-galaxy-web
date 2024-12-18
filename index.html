@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Galaxy Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body class="bg-gray-800 text-gray-200 font-sans">
+    <div class="flex justify-center bg-gray-700 shadow-md sticky top-0 z-10">
+        <button id="tab1-btn" class="tab-btn border-b-4 border-transparent text-gray-300 hover:text-blue-400 hover:border-blue-400 px-6 py-3 font-medium focus:outline-none">Control</button>
+        <button id="tab2-btn" class="tab-btn border-b-4 border-transparent text-gray-300 hover:text-blue-400 hover:border-blue-400 px-6 py-3 font-medium focus:outline-none">Connect</button>
+    </div>
+
+    <div id="tab1-content" class="tab-content max-w-4xl mx-auto mt-8 space-y-4 px-4">
+        <div id="show_logo" class="flex items-center bg-gray-600 hover:bg-blue-500 transition-colors rounded-lg shadow-lg p-4">
+            <span class="material-icons-outlined text-2xl mr-4">outlined_flag</span>
+            <div class="text-lg font-semibold">Show Logo</div>
+        </div>
+        <div id="kml_lake" class="flex items-center bg-gray-600 hover:bg-blue-500 transition-colors rounded-lg shadow-lg p-4">
+            <span class="material-icons-outlined text-2xl mr-4">looks_one</span>
+            <div class="text-lg font-semibold">Show KML: Lake</div>
+        </div>
+        <div id="kml_island" class="flex items-center bg-gray-600 hover:bg-blue-500 transition-colors rounded-lg shadow-lg p-4">
+            <span class="material-icons-outlined text-2xl mr-4">looks_two</span>
+            <div class="text-lg font-semibold">Show KML: Island</div>
+        </div>
+        <div id="remove_logo" class="flex items-center bg-gray-600 hover:bg-blue-500 transition-colors rounded-lg shadow-lg p-4">
+            <span class="material-icons-outlined text-2xl mr-4">signal_cellular_no_sim</span>
+            <div class="text-lg font-semibold">Remove Logo</div>
+        </div>
+        <div id="remove_kml" class="flex items-center bg-gray-600 hover:bg-blue-500 transition-colors rounded-lg shadow-lg p-4">
+            <span class="material-icons-outlined text-2xl mr-4">cancel</span>
+            <div class="text-lg font-semibold">Remove KMLS</div>
+        </div>
+    </div>
+
+    <div id="tab2-content" class="tab-content hidden max-w-lg mx-auto mt-8 bg-gray-700 rounded-lg shadow-lg p-6 space-y-6">
+        <div class="space-y-4">
+            <div>
+                <label for="host" class="block text-sm font-medium text-gray-300">Host</label>
+                <input id="host" type="text" placeholder="Enter Host" class="w-full bg-gray-600 border border-gray-500 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+            <div>
+                <label for="web-port" class="block text-sm font-medium text-gray-300">Web Port</label>
+                <input id="web-port" type="text" placeholder="Enter Web Port" class="w-full bg-gray-600 border border-gray-500 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300">Username</label>
+                <input id="username" type="text" placeholder="Enter Username" class="w-full bg-gray-600 border border-gray-500 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                <input id="password" type="password" placeholder="Enter Password" class="w-full bg-gray-600 border border-gray-500 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+            <div>
+                <label for="machines" class="block text-sm font-medium text-gray-300">Number of Machines</label>
+                <input id="machines" type="number" placeholder="Enter Number of Machines" class="w-full bg-gray-600 border border-gray-500 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+            <button id="submit_btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg py-3 transition-colors">Connect</button>
+        </div>
+    </div>
+
+    <div id="snackbar" class="hidden fixed bottom-4 right-4 bg-gray-900 text-white text-lg py-4 px-6 rounded-lg shadow-lg"></div>
+    </div>
+    
+    <script type="module" src="main.js"></script>
+</body>
+</html>
