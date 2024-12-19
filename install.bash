@@ -3,7 +3,7 @@ set -e
 
 # Define source and destination directories
 # Clone the GitHub repository
-REPO_URL="https://github.com/your-username/your-repo.git"
+REPO_URL="https://github.com/oGranny/liquid-galaxy-web"
 TEMP_DIR=$(mktemp -d)
 echo "Cloning repository from $REPO_URL to $TEMP_DIR..."
 git clone "$REPO_URL" "$TEMP_DIR"

@@ -3,16 +3,14 @@
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-// Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the POST request data
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
 
@@ -35,7 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Save the content to the specified path
+    if (posix_geteuid() === 0) {
+        $uid = posix_getpwnam('lg')['uid'];
+        $gid = posix_getpwnam('lg')['gid'];
+        posix_seteuid($uid);
+        posix_setegid($gid);
+    }
+
     if (file_put_contents($path, $content) === false) {
         http_response_code(500);
         echo json_encode(['error' => 'Failed to save content to the specified path.']);

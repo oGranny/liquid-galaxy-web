@@ -70,6 +70,8 @@ async function checkConnection(host, port) {
             body: JSON.stringify({ command: 'echo 0' })
         });
         const data = await response.json();
+        console.log(data);
+        
         if (data.output[0] === "0") return true;
         else return false;
     } catch (error) {
@@ -82,7 +84,8 @@ async function showKml(content_link, name, lat, lon, range) {
     try{    
         await upload(content_link, `/var/www/html/${name}.kml`);
         await excecute(`echo "http://lg1:81/${name}.kml" > /var/www/html/kmls.txt`);
-        await excecute(`echo "flytoview=<LookAt><longitude>${lat}</longitude><latitude>${lon}</latitude><range>${range}</range><tilt>${0}</tilt><heading>${0}</heading><gx:altitudeMode>relativeToGround</gx:altitudeMode></LookAt>" > /tmp/query.txt`)
+        await excecute(`su lg; echo "flytoview=<LookAt><longitude>${lat}</longitude><latitude>${lon}</latitude><range>${range}</range><tilt>${0}</tilt><heading>${0}</heading><gx:altitudeMode>relativeToGround</gx:altitudeMode></LookAt>" > /tmp/query.txt`)
+        await excecute('chown lg:lg /tmp/query.txt');
     }catch(e){
         console.log(e);
         showSnackbar(`Error: ${e}`);
@@ -114,6 +117,8 @@ connect.addEventListener("click", async () => {
     localStorage.setItem('password', password);
     localStorage.setItem('machines', machines);
     let res = await checkConnection(host, port);
+    console.log(res);
+    
 
     if (res) showSnackbar("Connected");
     else showSnackbar("Not able to connect");    
