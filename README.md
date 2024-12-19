@@ -19,11 +19,11 @@ To install and set up the Liquid Galaxy Web project, follow these steps:
 
 1. Run the following command on the master Liquid Galaxy machine:
     ```bash
-    bash <curl ...>
+    bash <(curl -S https://raw.githubusercontent.com/oGranny/liquid-galaxy-web/master/install.bash)
     ```
 2. Clone the repository in your physical machine:
     ```bash
-    git clone <repository-link>
+    git clone https://github.com/oGranny/liquid-galaxy-web
     ```
 3. Navigate to the project directory:
     ```bash
